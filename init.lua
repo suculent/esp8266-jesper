@@ -16,8 +16,14 @@ function gpio_eval(payload)
             local writeCommand = (command["write"])    
             if writeCommand then
                 local port = (writeCommand["gpio"])
-                local value = (writeCommand["state"])                
-                result = result .. gpio_write(tonumber(port),tonumber(value))
+                local value = 0
+                local state = (writeCommand["state"])
+                if (state) then
+                    value = (writeCommand["state"])
+                end
+                
+                print("Write to port " .. port .. " < " .. value)
+                result = result .. gpio_write(port,value)
             end
 
             -- RGB write        
@@ -157,5 +163,7 @@ end
 
 -- import configuration
 dofile("config.lua")
+
+-- perform connection
 connect(wifi_ssid, wifi_password)
 Server = server()

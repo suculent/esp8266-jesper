@@ -20,7 +20,7 @@ The console log will give you aquired IP address for the homebridge-plugin-jespe
 
 Perform a HTTP POST request with valid JSON payload:
 
-    curl <ESP8266_IP_ADDRESS> -d '{"read":{"port":0}'
+    curl <ESP8266_IP_ADDRESS> -d '{"write":{"port":1,"state":1}}'
     
 Reply should look like:
 
@@ -57,7 +57,7 @@ GPIO ports are numbered 0-n, ADC is read-only (write not supported).
 
 **HTTP POST**
 
-`{"write":{"port":4,"value":1}}`
+`{"write":{"port":4,"state":1}}`
 
 **RESPONSE**
 
